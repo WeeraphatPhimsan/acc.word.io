@@ -296,7 +296,7 @@
                 return true;
             } else {
                 for (var i = 0; i < history.childElementCount; i++) {
-                    if (checkWord.includes(history.children[i].getAttribute('value'))) {
+                    if (checkWord == history.children[i].getAttribute('value')) {
                         checkLoop++;
                         return false;
                     }

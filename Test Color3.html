@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Accounting Vocabulary Translation</title>
+    <style>
+        body {
+                    text-align: center;
+                    margin: 0px;
+                    height: 100%;
+                }
+                #myForm{
+                    display: inline-block;
+                    margin-top: 15%;
+                }
+                .searchBox {
+                border: 0px;
+                    color: rgb(51, 177, 51);
+                    background-color: rgb(169, 245, 169);
+                    height: 30px;
+                width: 300px;
+                padding: 5px;
+                font-size: 25px;
+                font-family: sans-serif;
+                text-align: center;
+            }
+                input[type=text]::placeholder{
+                    color: #ffffff;
+                    padding: 2px;
+                    font-size: 25px;
+                    font-family: sans-serif;
+                }
+                .searchBut, .speak {
+                height: 40px;
+                    color: white;
+                    background-color: rgb(74, 216, 74);
+                    border: 2px solid rgb(39, 173, 39);
+                    font-size: 25px;
+                    font-family: sans-serif;
+                }
+            .searchDiv {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(99, 231, 99);
+                font-size: 20px;
+                font-family: sans-serif;
+            }
+    
+                li {
+                    float: left;
+                }
+    
+                li a, .dropbtn {
+                    display: inline-block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+    
+                li a:hover, .dropdown:hover .dropbtn {
+                    background-color: rgb(125, 245, 125);
+                }
+    
+                li.dropdown {
+                    display: inline-block;
+                }
+    
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: rgb(81, 190, 81);
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content input,.history p {
+                color: #ffffff;
+                text-decoration: none;
+                display: block;
+                margin: auto;
+            }
+    
+                .dropdown-content a {
+                    color: #ffffff;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                }
+    
+                .col1:hover {background-color: rgb(218, 96, 145)}
+                .col2:hover {background-color: rgb(130, 86, 197)}
+                .col3:hover {background-color: rgb(57, 168, 57)}
+
+                .col1, .col2, .col3, .listWord {
+                background-color: rgb(81, 190, 81);
+                border: 0px;
+                height: 35px;
+                color: white;
+                font-size: 25px;
+                font-family: sans-serif;
+                width: 100%;
+            }
+            .listWord:hover {
+                background-color: rgb(46, 134, 46);
+            }
+    
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+    
+                .active {
+                     background-color: rgb(42, 161, 42);
+                }
+                
+                h1 {
+                    font-size: 3em;
+                    color: rgb(118, 218, 118);
+                }
+    
+                html {
+                    background-image: url("images/Accounting.jpg");
+                    height: 100%;
+                    position: relative;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    margin: 0px;
+                }
+                .resultForm, .speak{
+                display: inline-block;
+                margin-top: 30px;
+            }
+            .result {
+                border: 0px;
+                color: rgb(51, 177, 51);
+                    background-color: rgb(169, 245, 169);
+                height: 65px;
+                width: 600px;
+                padding: 5px;
+                font-size: 25px;
+                font-family: sans-serif;
+                border-radius: 10px;
+                text-align: center;
+                resize: none;
+            }
+    
+            </style>
+    <script src='voicerss-tts.min.js'></script>
+</head>
+
+<body>
+    <div class="bgimg">
+        <ul class="searchDiv">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Color</a>
+                <div class="dropdown-content">
+                    <a href="Test Color1.html" class="col1">Color1</a>
+                    <a href="Test Color2.html" class="col2">Color2</a>
+                    <a href="Test Color3.html" class="col3">Color3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">History</a>
+                <div class="dropdown-content" id="history">
+
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="https://translate.google.co.th/?hl=th" class="dropbtn">Google Translate</a>
+            </li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+
+        <form id="myForm">
+            <h1 class="site_title mega">Accounting Vocabulary</h1>
+            <input type="text" list="vocab" class="searchBox" placeholder="Example: average">
+            <datalist id="vocab">
+
+            </datalist>
+            <input type="button" value="Search" class="searchBut">
+        </form>
+        <div>
+            <form class="resultForm">
+                <td><textarea disabled="disabled" class="result">Translation Area</textarea></td>
+            </form>
+        </div>
+        <div>
+            <input type="button" value="Speak" class="speak">
+        </div>
+
+    </div>
+
+
+    <script>
+        var data = document.querySelector('.searchBox');
+        data.onfocus = addWordList;
+        var option = document.getElementById("vocab");
+        var init = 0;
+        var searchBut = document.querySelector('.searchBut');
+        var show = document.querySelector('.result');
+        var posHis = 0;
+        var speak = document.querySelector('.speak');
+
+        var check = '';
+
+        var wordList;
+        var requestURL = "Vocab.json";
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload = function () {
+            var list = request.response;
+            showVocab(list);
+        }
+
+        function showVocab(jsonobj) {
+            wordList = jsonobj['Vocabulary'];
+        }
+
+        function addWordList() {
+            var word = '';
+            if (init == 0) {
+                for (var i = 0; i < wordList.length; i++) {
+                    var vocabLi = document.createElement("OPTION");
+                    word = wordList[i].vocab;
+                    vocabLi.setAttribute("value", word.slice(1, word.length - 1));
+                    option.appendChild(vocabLi);
+                }
+                init++;
+            }
+        }
+
+        searchBut.addEventListener('click', search);
+        function search() {
+            var insertWord = document.querySelector('.searchBox');
+
+            check = insertWord.value;
+
+            for (var i = 0; i < wordList.length; i++) {
+                var vocabList = wordList[i].vocab;
+                if (check == '' || check == ' ' || check == "  " || check == "   ") {
+                    show.textContent = "Please enter something";
+                }
+                else if (vocabList.includes(check)) {
+                    if (vocabList.length == (check.length + 2)) {
+                        show.textContent = vocabList + " \n " + wordList[i].meaning;
+                        addHistory(vocabList);
+                        break;
+                    }
+                }
+                else {
+                    show.textContent = "Sorry, we can't find your word (" + check + ")";
+                }
+            }
+        }
+
+        speak.addEventListener('click', speech);
+        function speech() {
+            var line = show.value.split('\n');
+            VoiceRSS.speech({
+                key: '2558902b05234f43906c04edebfc269c',
+                src: line[0],
+                hl: 'en-us',
+                r: 0,
+                c: 'mp3',
+                f: '44khz_16bit_stereo',
+                ssml: false
+            });
+        }
+
+        function addHistory(wordHis) {
+            var history = document.querySelector('#history');
+            var listWord = document.createElement('input');
+
+            if (checkHis(wordHis) == true) {
+                listWord.setAttribute('type', 'button');
+                listWord.setAttribute('class', 'listWord');
+                listWord.setAttribute('value', wordHis);
+
+                listWord.addEventListener('click', showMean);
+                history.appendChild(listWord);
+            }
+        }
+
+        function checkHis(checkWord) {
+            var history = document.querySelector('#history');
+            var checkLoop = 0;
+
+            if (history.childElementCount == 0) {
+                return true;
+            } else {
+                for (var i = 0; i < history.childElementCount; i++) {
+                    if (checkWord.includes(history.children[i].getAttribute('value'))) {
+                        checkLoop++;
+                        return false;
+                    }
+                }
+                if (checkLoop == 0) {
+                    return true;
+                }
+            }
+        }
+
+        function showMean(event) {
+            var e = event.target;
+            for (var i = 0; i < wordList.length; i++) {
+                var vocabList = wordList[i].vocab;
+                if (vocabList.length == (e.value.length)) {
+                    if (vocabList.includes(e.value)) {
+                        show.textContent = vocabList + " \n " + wordList[i].meaning;
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

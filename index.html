@@ -2,7 +2,9 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Accounting Vocabulary Translation</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
         body {
                 text-align: center;
@@ -90,11 +92,7 @@
                     text-align: left;
                 }
 
-            .col1:hover {background-color: rgb(218, 96, 145)}
-            .col2:hover {background-color: rgb(130, 86, 197)}
-            .col3:hover {background-color: rgb(57, 168, 57)}
-
-            .col1, .col2, .col3, .listWord {
+            .listWord {
                 background-color: #0080bb;
                 border: 0px;
                 height: 35px;
@@ -114,6 +112,7 @@
 
             .active {
                  background-color: #0776c0;
+                 height: 22px;
             }
             
             h1 {
@@ -148,6 +147,23 @@
                 resize: none;
             }
 
+            .lang {
+                color: white;
+                background-color: #1f87cc;
+                border: 0px;
+                font-size: 20px;
+                width: 60px;
+                height: 50px;
+            }
+
+            input[type=image] {
+                margin: 10px;
+            }
+
+            input[type=image]:hover {
+                border: 5px solid #1c4d6e ;
+            }
+
         </style>
     <script src='voicerss-tts.min.js'></script>
 </head>
@@ -155,29 +171,32 @@
 <body>
     <div class="bgimg">
         <ul class="searchDiv">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" id="home">Home</a></li>
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Color</a>
-                <div class="dropdown-content">
-                    <a href="Test Color1.html" class="col1">Color1</a>
-                    <a href="Test Color2.html" class="col2">Color2</a>
-                    <a href="Test Color3.html" class="col3">Color3</a>
+                <a href="javascript:void(0)" class="dropbtn" id="color">Color</a>
+                <div class="dropdown-content" id='dropdown-content'>
+                    <input type="image" src="images/Color/Color1.png" class="col1">
+                    <input type="image" src="images/Color/Color2.png" class="col2">
+                    <input type="image" src="images/Color/Color3.png" class="col3">
+                    <input type="image" src="images/Color/Color4.png" class="col4">
+                    <input type="image" src="images/Color/Color5.png" class="col5">
                 </div>
             </li>
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">History</a>
+                <a href="javascript:void(0)" class="dropbtn" id="historyTitle">History</a>
                 <div class="dropdown-content" id="history">
 
                 </div>
             </li>
             <li class="dropdown">
-                <a href="https://translate.google.co.th/?hl=th" class="dropbtn">Google Translate</a>
+                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" id="google">Google Translate</a>
             </li>
-            <li style="float:right"><a class="active" href="#about">About</a></li>
+            <li style="float:right"><a class="active" href="#about" id="about">About</a></li>
+            <li style="float:right"><input type="button" value="EN" class="lang"></li>
         </ul>
 
         <form id="myForm">
-            <h1 class="site_title mega">Accounting Vocabulary</h1>
+            <h1 class="site_title mega" id="title">Accounting Vocabulary</h1>
             <input type="text" list="vocab" class="searchBox" placeholder="Example: average">
             <datalist id="vocab">
 
@@ -205,8 +224,17 @@
         var show = document.querySelector('.result');
         var posHis = 0;
         var speak = document.querySelector('.speak');
+        var lang = document.querySelector('.lang');
+
+        var nHome = document.getElementById('home');
+        var nColor = document.getElementById('color');
+        var nHis = document.getElementById('historyTitle');
+        var nGoo = document.getElementById('google');
+        var nAbout = document.getElementById('about');
+        var nAcc = document.getElementById('title');
 
         var check = '';
+        var mode = 'en';
 
         var wordList;
         var requestURL = "Vocab.json";
@@ -225,15 +253,28 @@
 
         function addWordList() {
             var word = '';
-            if (init == 0) {
-                for (var i = 0; i < wordList.length; i++) {
-                    var vocabLi = document.createElement("OPTION");
-                    word = wordList[i].vocab;
-                    vocabLi.setAttribute("value", word.slice(1, word.length - 1));
-                    option.appendChild(vocabLi);
+            if (mode == 'en') {
+                if (init == 0) {
+                    for (var i = 0; i < wordList.length; i++) {
+                        var vocabLi = document.createElement("OPTION");
+                        word = wordList[i].vocab;
+                        vocabLi.setAttribute("value", word.slice(1, word.length - 1));
+                        option.appendChild(vocabLi);
+                    }
+                    init++;
                 }
-                init++;
+            } else if (mode == 'th') {
+                if (init == 0) {
+                    for (var i = 0; i < wordList.length; i++) {
+                        var vocabLi = document.createElement("OPTION");
+                        word = wordList[i].meaning;
+                        vocabLi.setAttribute("value", word.slice(1, word.length - 1));
+                        option.appendChild(vocabLi);
+                    }
+                    init++;
+                }
             }
+
         }
 
         searchBut.addEventListener('click', search);
@@ -241,23 +282,42 @@
             var insertWord = document.querySelector('.searchBox');
 
             check = insertWord.value;
-
-            for (var i = 0; i < wordList.length; i++) {
-                var vocabList = wordList[i].vocab;
-                if (check == '' || check == ' ' || check == "  " || check == "   ") {
-                    show.textContent = "Please enter something";
-                }
-                else if (vocabList.includes(check)) {
-                    if (vocabList.length == (check.length + 2)) {
-                        show.textContent = vocabList + " \n " + wordList[i].meaning;
-                        addHistory(vocabList);
-                        break;
+            if (mode == 'en') {
+                for (var i = 0; i < wordList.length; i++) {
+                    var vocabList = wordList[i].vocab;
+                    if (check == '' || check == ' ' || check == "  " || check == "   ") {
+                        show.textContent = "Please enter something";
+                    }
+                    else if (vocabList.includes(check)) {
+                        if (vocabList.length == (check.length + 2)) {
+                            show.textContent = vocabList + " \n " + wordList[i].meaning;
+                            addHistory(vocabList);
+                            break;
+                        }
+                    }
+                    else {
+                        show.textContent = "Sorry, we can't find your word (" + check + ")";
                     }
                 }
-                else {
-                    show.textContent = "Sorry, we can't find your word (" + check + ")";
+            } else if (mode == 'th') {
+                for (var i = 0; i < wordList.length; i++) {
+                    var vocabList = wordList[i].meaning;
+                    if (check == '' || check == ' ' || check == "  " || check == "   ") {
+                        show.textContent = "Please enter something";
+                    }
+                    else if (vocabList.includes(check)) {
+                        if (vocabList.length == (check.length + 2)) {
+                            show.textContent = wordList[i].vocab + " \n " + vocabList;
+                            addHistory(wordList[i].vocab);
+                            break;
+                        }
+                    }
+                    else {
+                        show.textContent = "Sorry, we can't find your word (" + check + ")";
+                    }
                 }
             }
+
         }
 
         speak.addEventListener('click', speech);
@@ -285,6 +345,14 @@
 
                 listWord.addEventListener('click', showMean);
                 history.appendChild(listWord);
+                $(document).ready(function () {
+                    $('.listWord').css('background-color', window.getComputedStyle(document.getElementById('dropdown-content'),null).getPropertyValue('background-color'));
+                    $('.listWord').hover(function () {
+                        $(this).css('background-color', window.getComputedStyle(document.getElementById('dropdown-content'),null).getPropertyValue('background-color'));
+                    }, function () {
+                        $(this).css('background-color', 'initial');
+                    });
+                });
             }
         }
 
@@ -319,6 +387,235 @@
                 }
             }
         }
+
+        lang.addEventListener('click', changeLang)
+        function changeLang() {
+            var inLang = lang.getAttribute('value');
+            if (inLang == 'EN') {
+                lang.setAttribute('value', 'ไทย');
+                nHome.textContent = "หน้าหลัก";
+                nColor.textContent = "เปลี่ยนสี";
+                nHis.textContent = "ประวัติ";
+                nGoo.textContent = "แปลภาษาด้วย Google";
+                nAbout.textContent = "เกี่ยวกับ";
+                nAcc.textContent = "ศัพท์ทางบัญชี";
+                data.setAttribute('placeHolder', 'ตัวอย่าง: ถัวเฉลี่ย');
+                searchBut.setAttribute('value', 'ค้นหา');
+                show.textContent = 'พื้นที่สำหรับคำแปล';
+                speak.setAttribute('value', 'เสียงพูด');
+                mode = 'th';
+                init = 0;
+                while (option.firstChild) {
+                    option.removeChild(option.firstChild);
+                }
+                addWordList;
+            } else {
+                lang.setAttribute('value', 'EN');
+                nHome.textContent = "Home";
+                nColor.textContent = "Color";
+                nHis.textContent = "History";
+                nGoo.textContent = "Google translate";
+                nAbout.textContent = "About";
+                nAcc.textContent = "Accounting Vocabulary";
+                data.setAttribute('placeHolder', 'Example: average');
+                searchBut.setAttribute('value', 'Search');
+                show.textContent = 'Translation Area';
+                speak.setAttribute('value', 'Speak');
+                mode = 'en';
+                init = 0;
+                while (option.firstChild) {
+                    option.removeChild(option.firstChild);
+                }
+                addWordList;
+            }
+
+        }
+
+        $(document).ready(function () {
+            $('.col1').click(function () {
+                $('.searchBox').css('color', '#ffffff');
+                $('.searchBox').css('background-color', '#f6aa1c');
+                $('.searchBut').css('background-color', '#bc2808');
+                $('.searchBut').css('border', '2px solid #6a1503');
+                $('.speak').css('background-color', '#bc2808');
+                $('.speak').css('border', '2px solid #6a1503');
+                $('.searchDiv').css('background-color', '#220901');
+                $('li a').hover(function () {
+                    $(this).css('background-color', '#5b1702');
+                }, function () {
+                    $(this).css('background-color', 'initial');
+                });
+                $('.dropdown-content').css('background-color', '#521306');
+                $('.active').css('background-color', '#941b0c');
+                $('.active').hover(function () {
+                    $(this).css('background-color', '#5b1702');
+                }, function () {
+                    $(this).css('background-color', '#941b0c');
+                });
+                $('h1').css('color', '#941b0c');
+                $('.result').css('background-color', '#511206');
+                $('.result').css('color', '#ffffff');
+                $('.lang').css('background-color', '#621708');
+                $('input[type=image]').hover(function () {
+                    $(this).css('border', '5px solid #6a1503');
+                }, function () {
+                    $(this).css('border', '0px');
+                });
+                $('.listWord').css('background-color', '#521306');
+                $('.listWord').hover(function () {
+                    $(this).css('background-color', '#87230f');
+                }, function () {
+                    $(this).css('background-color', '#521306');
+                });
+            });
+            $('.col2').click(function () {
+                $('.searchBox').css('color', '#ffffff');
+                $('.searchBox').css('background-color', '#ff729f');
+                $('.searchBut').css('background-color', '#56cbf9');
+                $('.searchBut').css('border', '2px solid #2b8ab0');
+                $('.speak').css('background-color', '#7f7caf');
+                $('.speak').css('border', '2px solid #59558e');
+                $('.searchDiv').css('background-color', '#7f7caf');
+                $('li a').hover(function () {
+                    $(this).css('background-color', '#59558e');
+                }, function () {
+                    $(this).css('background-color', 'initial');
+                });
+                $('.dropdown-content').css('background-color', '#9a97c3');
+                $('.active').css('background-color', '#61d8c4');
+                $('.active').hover(function () {
+                    $(this).css('background-color', '#81f4e1');
+                }, function () {
+                    $(this).css('background-color', '#61d8c4');
+                });
+                $('h1').css('color', '#65dcc8');
+                $('.result').css('background-color', '#81f4e1');
+                $('.result').css('color', '#0d6355');
+                $('.lang').css('background-color', '#ff729f');
+                $('input[type=image]').hover(function () {
+                    $(this).css('border', '5px solid #6a1503');
+                }, function () {
+                    $(this).css('border', '0px');
+                });
+                $('.listWord').css('background-color', '#9a97c3');
+                $('.listWord').hover(function () {
+                    $(this).css('background-color', '#6d69a3');
+                }, function () {
+                    $(this).css('background-color', '#9a97c3');
+                });
+            });
+            $('.col3').click(function () {
+                $('.searchBox').css('color', '#ffffff');
+                $('.searchBox').css('background-color', '#8a36a4');
+                $('.searchBut').css('background-color', '#43cdac');
+                $('.searchBut').css('border', '2px solid #0e5d4a');
+                $('.speak').css('background-color', '#1ead6c');
+                $('.speak').css('border', '2px solid #0e663e');
+                $('.speak').css('color', 'white');
+                $('.searchDiv').css('background-color', '#550c6c');
+                $('li a').hover(function () {
+                    $(this).css('background-color', '#8a36a4');
+                }, function () {
+                    $(this).css('background-color', 'initial');
+                });
+                $('.dropdown-content').css('background-color', '#320440');
+                $('.active').css('background-color', '#ec4365');
+                $('.active').hover(function () {
+                    $(this).css('background-color', '#971c35');
+                }, function () {
+                    $(this).css('background-color', '#ec4365');
+                });
+                $('h1').css('color', '#fed24f');
+                $('.result').css('background-color', '#ec4365');
+                $('.result').css('color', '#681526');
+                $('.lang').css('background-color', '#fed24f');
+                $('input[type=image]').hover(function () {
+                    $(this).css('border', '5px solid #b170c5');
+                }, function () {
+                    $(this).css('border', '0px');
+                });
+                $('.listWord').css('background-color', '#320440');
+                $('.listWord').hover(function () {
+                    $(this).css('background-color', '#670c82');
+                }, function () {
+                    $(this).css('background-color', '#320440');
+                });
+            });
+            $('.col4').click(function () {
+                $('.searchBox').css('color', '#fffcf4');
+                $('.searchBox').css('background-color', '#f1d07e');
+                $('.searchBut').css('background-color', '#da2123');
+                $('.searchBut').css('border', '2px solid #7d0e0f');
+                $('.speak').css('background-color', '#22acd2');
+                $('.speak').css('border', '2px solid #136981');
+                $('.searchDiv').css('background-color', '#eec832');
+                $('li a').hover(function () {
+                    $(this).css('background-color', '#b4961e');
+                }, function () {
+                    $(this).css('background-color', 'initial');
+                });
+                $('.dropdown-content').css('background-color', '#d3b230');
+                $('.active').css('background-color', '#da2123');
+                $('.active').hover(function () {
+                    $(this).css('background-color', '#7f0e0f');
+                }, function () {
+                    $(this).css('background-color', '#da2123');
+                });
+                $('h1').css('color', '#196686');
+                $('.result').css('background-color', '#196686');
+                $('.result').css('color', '#b8e0f0');
+                $('.lang').css('background-color', '#22acd2');
+                $('input[type=image]').hover(function () {
+                    $(this).css('border', '5px solid #74621a');
+                }, function () {
+                    $(this).css('border', '0px');
+                });
+                $('.listWord').css('background-color', '#d3b230');
+                $('.listWord').hover(function () {
+                    $(this).css('background-color', '#f0d25e');
+                }, function () {
+                    $(this).css('background-color', '#d3b230');
+                });
+            });
+            $('.col5').click(function () {
+                $('.searchBox').css('color', '#454545');
+                $('.searchBox').css('background-color', '#bebfbf');
+                $('.searchBut').css('background-color', '#d9764f');
+                $('.searchBut').css('border', '2px solid #9b5438');
+                $('.speak').css('background-color', '#e3e7ee');
+                $('.speak').css('color', '#515d73');
+                $('.speak').css('border', '2px solid #515d73');
+                $('.searchDiv').css('background-color', '#313443');
+                $('li a').hover(function () {
+                    $(this).css('background-color', '#62667b');
+                }, function () {
+                    $(this).css('background-color', 'initial');
+                });
+                $('.dropdown-content').css('background-color', '#444963');
+                $('.active').css('background-color', '#ed8258');
+                $('.active').hover(function () {
+                    $(this).css('background-color', '#b05b3a');
+                }, function () {
+                    $(this).css('background-color', '#ed8258');
+                });
+                $('h1').css('color', '#898989');
+                $('.result').css('background-color', '#313443');
+                $('.result').css('color', '#b0b5cd');
+                $('.lang').css('background-color', '#515d73');
+                $('input[type=image]').hover(function () {
+                    $(this).css('border', '5px solid #1e2131');
+                }, function () {
+                    $(this).css('border', '0px');
+                });
+                $('.listWord').css('background-color', '#444963');
+                $('.listWord').hover(function () {
+                    $(this).css('background-color', '#6b7398');
+                }, function () {
+                    $(this).css('background-color', '#444963');
+                });
+            });
+
+        });
     </script>
 
 </body>

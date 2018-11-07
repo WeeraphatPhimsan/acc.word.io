@@ -64,6 +64,7 @@
             var insertWord = document.querySelector('.searchBox');
 
             check = insertWord.value;
+             check = check.toLowerCase();
             if (mode == 'en') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].vocab;

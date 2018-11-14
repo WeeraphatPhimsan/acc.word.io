@@ -1,4 +1,4 @@
- var data = document.querySelector('.searchBox');
+        var data = document.querySelector('.searchBox');
         data.onfocus = addWordList;
         var option = document.getElementById("vocab");
         var init = 0;
@@ -24,7 +24,20 @@
         
         var aboutBtn = document.querySelector('#about');
         var instruc = document.querySelector('.modal');
+        var closeBtn = document.querySelector('.closeBtn');
 
+        closeBtn.addEventListener('click',function(){
+         if(instruc.style.display == "block"){
+                 instruc.style.display = "none";
+            }
+            else{
+                instruc.style.display = "block";
+            }
+
+
+        });
+        
+        });
         aboutBtn.addEventListener('click',function(){
             if(instruc.style.display == "block"){
                  instruc.style.display = "none";

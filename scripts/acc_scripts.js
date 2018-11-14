@@ -21,6 +21,28 @@
         var wordList;
         var requestURL = "Vocab.json";
         var request = new XMLHttpRequest();
+        
+        var aboutBtn = document.querySelector('#about');
+        var instruc = document.querySelector('.modal');
+
+        aboutBtn.addEventListener('click',function(){
+            if(instruc.style.display == "block"){
+                 instruc.style.display = "none";
+            }
+            else{
+                instruc.style.display = "block";
+            }
+
+
+        });
+        window.onclick = function(event){
+            if(event.target == instruc){
+                instruc.style.display = "none";
+            }
+        }
+
+
+
         request.open('GET', requestURL);
         request.responseType = 'json';
         request.send();
@@ -32,7 +54,7 @@
         function showVocab(jsonobj) {
             wordList = jsonobj['Vocabulary'];
         }
-
+        
         function addWordList() {
             var word = '';
             if (mode == 'en') {
@@ -64,7 +86,6 @@
             var insertWord = document.querySelector('.searchBox');
 
             check = insertWord.value;
-             check = check.toLowerCase();
             if (mode == 'en') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].vocab;

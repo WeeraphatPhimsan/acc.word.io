@@ -24,7 +24,7 @@
                 font-size: 25px;
                 font-family: sans-serif;
             }
-            .searchBut, .speak {
+            .searchBut, .speak, .closeBtn {
                 height: 40px;
                 color: white;
                 background-color: #4db8ff;

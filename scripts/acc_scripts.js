@@ -35,7 +35,7 @@
             }
 
 
-        });
+     
         
         });
         aboutBtn.addEventListener('click',function(){

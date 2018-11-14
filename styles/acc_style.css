@@ -174,3 +174,6 @@
     background-color: #6098f2;
     font-family: sans-serif;
 }
+input[type=button]{
+  -webkit-appearance: none;
+}

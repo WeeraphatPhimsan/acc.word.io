@@ -1,6 +1,6 @@
-        var data = document.querySelector('.searchBox');
-        data.onfocus = addWordList;
-        var option = document.getElementById("vocab");
+ var data = document.querySelector('.searchBox');
+         data.onkeyup = filterFunction;
+         var option = document.getElementById("vocab");
         var init = 0;
         var searchBut = document.querySelector('.searchBut');
         var show = document.querySelector('.result');
@@ -20,24 +20,12 @@
 
         var wordList;
         var requestURL = "Vocab.json";
-        var request = new XMLHttpRequest();
+        var responseJson;
+        // var request = new XMLHttpRequest();
         
         var aboutBtn = document.querySelector('#about');
         var instruc = document.querySelector('.modal');
-        var closeBtn = document.querySelector('.closeBtn');
 
-        closeBtn.addEventListener('click',function(){
-         if(instruc.style.display == "block"){
-                 instruc.style.display = "none";
-            }
-            else{
-                instruc.style.display = "block";
-            }
-
-
-     
-        
-        });
         aboutBtn.addEventListener('click',function(){
             if(instruc.style.display == "block"){
                  instruc.style.display = "none";
@@ -55,30 +43,34 @@
         }
 
 
+ 
+        responseJson = getJsonData();
+       
+        wordList = responseJson['Vocabulary'];
 
-        request.open('GET', requestURL);
-        request.responseType = 'json';
-        request.send();
-        request.onload = function () {
-            var list = request.response;
-            showVocab(list);
-        }
-
-        function showVocab(jsonobj) {
-            wordList = jsonobj['Vocabulary'];
-        }
-        
-        function addWordList() {
-            var word = '';
+      
+        function filterFunction() {
+            var word,word2,wtc ;
+             
+            wtc = document.getElementById("searchBoxx");
+            word2 = wtc.value;
             if (mode == 'en') {
-                if (init == 0) {
+                 if (init == 0) {
                     for (var i = 0; i < wordList.length; i++) {
-                        var vocabLi = document.createElement("OPTION");
-                        word = wordList[i].vocab;
-                        vocabLi.setAttribute("value", word.slice(1, word.length - 1));
-                        option.appendChild(vocabLi);
-                    }
-                    init++;
+                    var vocabLi = document.createElement("OPTION");
+                    word = wordList[i].vocab;
+                    word = word.slice(1, word.length - 1);                        
+               if(word.indexOf(word2) == 0){
+                vocabLi.setAttribute("value",  word    );
+                option.appendChild(vocabLi);
+               }
+                
+                   
+                     
+                 
+                                             
+                          }
+                     init++;
                 }
             } else if (mode == 'th') {
                 if (init == 0) {
@@ -104,7 +96,7 @@
                     var vocabList = wordList[i].vocab;
                     if (check == '' || check == ' ' || check == "  " || check == "   ") {
                         show.textContent = "Please enter something";
-                    }
+                    }  
                     else if (vocabList.includes(check)) {
                         if (vocabList.length == (check.length + 2)) {
                             show.textContent = vocabList + " \n " + wordList[i].meaning;

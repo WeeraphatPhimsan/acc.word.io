@@ -3273,7 +3273,7 @@ var vocabObj =
     ]
 };
  
-var vocabJson = JSON.stringify(vocabObj);
+ var vocabJson = JSON.stringify(vocabObj);
 var objectJ = JSON.parse(vocabJson);
 function getJsonData(){
  

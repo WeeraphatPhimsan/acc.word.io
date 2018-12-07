@@ -43,9 +43,20 @@
         }
 
 
- 
+
+        // request.open('GET', requestURL);
+        // request.responseType = 'json';
+        // request.send();
+        // request.onload = function () {
+        //     var list = request.response;
+        //     showVocab(list);
+        // }
+
+        // function showVocab(jsonobj) {
+        //     wordList = jsonobj['Vocabulary'];
+        // }
+        
         responseJson = getJsonData();
-       
         wordList = responseJson['Vocabulary'];
 
       
@@ -54,24 +65,28 @@
              
             wtc = document.getElementById("searchBoxx");
             word2 = wtc.value;
+            while (option.firstChild) {
+               option.removeChild(option.firstChild);
+            }
             if (mode == 'en') {
-                 if (init == 0) {
+                  
                     for (var i = 0; i < wordList.length; i++) {
                     var vocabLi = document.createElement("OPTION");
                     word = wordList[i].vocab;
                     word = word.slice(1, word.length - 1);                        
-               if(word.indexOf(word2) == 0){
+               if(word2.length > 0){
+                if(word.startsWith(word2)){
                 vocabLi.setAttribute("value",  word    );
                 option.appendChild(vocabLi);
                }
-                
-                   
-                     
-                 
-                                             
-                          }
-                     init++;
-                }
+
+               }else if (word2.length >3){
+               
+               }
+
+
+                   init++;
+               }
             } else if (mode == 'th') {
                 if (init == 0) {
                     for (var i = 0; i < wordList.length; i++) {

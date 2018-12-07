@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accounting Vocabulary Translation</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/acc_style.css">
+    <style>
+        
+            html {
+                background-image: url("images/Accounting.jpg");
+                height: 100%;
+                position: relative;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin: 0px;
+            }
+         
+
+        </style>
+    <script src='voicerss-tts.min.js'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="bgimg">
+        <ul class="searchDiv">
+            <li><a href="index.html" id="home">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" id="color">Color</a>
+                <div class="dropdown-content" id='dropdown-content'>
+                    <input type="image" src="images/Color/Color1.png" class="col1">
+                    <input type="image" src="images/Color/Color2.png" class="col2">
+                    <input type="image" src="images/Color/Color3.png" class="col3">
+                    <input type="image" src="images/Color/Color4.png" class="col4">
+                    <input type="image" src="images/Color/Color5.png" class="col5">
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" id="historyTitle">History</a>
+                <div class="dropdown-content" id="history">
+
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" id="google">Google Translate</a>
+            </li>
+            <li style="float:right"><a class="active"  id="about">About</a>
+                <div class="modal">
+                    <div class="modalWindow">
+                     <h2>Instruction</h2>
+                        <div id="Instruction">
+                            <img src="images/homeBtn.jpg"> Back to home page</br>
+                            <img src="images/colorBtn.jpg"> Change the theme of the web application</br>
+                            <img src="images/historyBtn.jpg"> View word has been searched</br>
+                            <img src="images/googleBtn.jpg"> Link to Google Translate</br>
+                            <img src="images/langBtn.jpg"> Click to change language</br>
+                             <img src="images/aboutBtn.jpg"> Show Instruction</br>
+                             <img src="images/speakBtn.jpg"> Pronouncing the word</br>
+                             <img src="images/searchArea.jpg"> Show translation</br>
+                            <button type="button" class="closeBtn">X</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="float:right"><input type="button" value="EN" class="lang"></li>
+        </ul>
+
+        <form id="myForm">
+            <h1 class="site_title mega" id="title">Accounting Vocabulary</h1>
+            <input type="text" list="vocab" class="searchBox" id="searchBoxx" placeholder="Example: average">
+            <datalist id="vocab">
+
+            </datalist>
+            <input type="button" value="Search" class="searchBut">
+             <button type="button" class="mic"></button>
+        </form>
+        <div>
+            <form class="resultForm">
+                <td><textarea disabled="disabled" class="result">Translation Area</textarea></td>
+            </form>
+        </div>
+        <div>
+            <input type="button" value="Speak" class="speak">
+        </div>
+
+    </div>
+ 
+
+</body>
+
+</html>
+    <script src="call-api.js"></script>
+
+ <script type="text/javascript" src="scripts/acc_scripts.js"></script>
+   <script src="scripts/speech2text.js"></script>

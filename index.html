@@ -2,7 +2,6 @@
 <html>
 
 <head>
- 
     <meta charset="UTF-8">
     <title>Accounting Vocabulary Translation</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,7 +21,7 @@
 
         </style>
     <script src='voicerss-tts.min.js'></script>
-      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -38,8 +37,6 @@
                     <input type="image" src="images/Color/Color3.png" class="col3">
                     <input type="image" src="images/Color/Color4.png" class="col4">
                     <input type="image" src="images/Color/Color5.png" class="col5">
-           
-
                 </div>
             </li>
             <li class="dropdown">
@@ -49,7 +46,7 @@
                 </div>
             </li>
             <li class="dropdown">
-                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" id="google" target="_blank">Google Translate</a>
+                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" id="google">Google Translate</a>
             </li>
             <li style="float:right"><a class="active"  id="about">About</a>
                 <div class="modal">
@@ -64,8 +61,7 @@
                              <img src="images/aboutBtn.jpg"> Show Instruction</br>
                              <img src="images/speakBtn.jpg"> Pronouncing the word</br>
                              <img src="images/searchArea.jpg"> Show translation</br>
-                          
-                             <input type="button" class="closeBtn" value="x">
+                            <button type="button" class="closeBtn">X</button>
                         </div>
                     </div>
                 </div>
@@ -75,7 +71,7 @@
 
         <form id="myForm">
             <h1 class="site_title mega" id="title">Accounting Vocabulary</h1>
-            <input type="text" list="vocab" class="searchBox" placeholder="Example: average">
+            <input type="text" list="vocab" class="searchBox" id="searchBoxx" placeholder="Example: average">
             <datalist id="vocab">
 
             </datalist>
@@ -97,5 +93,7 @@
 </body>
 
 </html>
+    <script src="call-api.js"></script>
+
  <script type="text/javascript" src="scripts/acc_scripts.js"></script>
    <script src="scripts/speech2text.js"></script>

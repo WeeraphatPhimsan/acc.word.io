@@ -3272,17 +3272,7 @@ var vocabObj =
         }
     ]
 };
-
- var express = require('express');
-var app = express();
-app.get('/', function(req,res){
-    res.send('Hello Node.js KKU');
-});
-
-var server = app.listen(8081, function(){
- console.log("Example app lisening at http:/127.0.0.1:8081");
-});  
-
+ 
 var vocabJson = JSON.stringify(vocabObj);
 var objectJ = JSON.parse(vocabJson);
 function getJsonData(){

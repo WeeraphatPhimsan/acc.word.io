@@ -112,7 +112,8 @@
                         show.textContent = "Sorry, we can't find your word (" + check + ")";
                     }
                 }
-            } else if (mode == 'th') {
+            } 
+         if (mode == 'th') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].meaning;
                     if (check == '' || check == ' ' || check == "  " || check == "   ") {

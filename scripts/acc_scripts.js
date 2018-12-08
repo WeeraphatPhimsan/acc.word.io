@@ -21,8 +21,7 @@
         var wordList;
         var requestURL = "Vocab.json";
         var responseJson;
-        // var request = new XMLHttpRequest();
-        
+         
         var aboutBtn = document.querySelector('#about');
         var instruc = document.querySelector('.modal');
 
@@ -44,17 +43,7 @@
 
 
 
-        // request.open('GET', requestURL);
-        // request.responseType = 'json';
-        // request.send();
-        // request.onload = function () {
-        //     var list = request.response;
-        //     showVocab(list);
-        // }
-
-        // function showVocab(jsonobj) {
-        //     wordList = jsonobj['Vocabulary'];
-        // }
+       
         
         responseJson = getJsonData();
         wordList = responseJson['Vocabulary'];
@@ -250,7 +239,7 @@
                 while (option.firstChild) {
                     option.removeChild(option.firstChild);
                 }
-                addWordList;
+                
             }
 
         }

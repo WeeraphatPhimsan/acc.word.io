@@ -3273,7 +3273,7 @@ var vocabObj =
     ]
 };
 
-  
+   
 var vocabJson = JSON.stringify(vocabObj);
 var objectJ = JSON.parse(vocabJson);
 function getJsonData(){
@@ -3281,7 +3281,32 @@ function getJsonData(){
  return objectJ;
 
 }
-
+function addWord(word,meaning){
+    var wtd = ' ' + word + ' ';
+    var newMeaning = meaning; 
+    var newVocab = { vocab: wtd , meaning: newMeaning};
+    var length = objectJ.Vocabulary.length;     
+     objectJ.Vocabulary.push( newVocab);
+     
+     return  objectJ;
+ 
+ }
+ function updateWord(word,meaning){
+    var wtd = ' ' + word + ' ';
+    var newMeaning = meaning; 
+    var length = objectJ.Vocabulary.length;     
+    for(var i = 0 ; i < length ; i++){
+        if(objectJ.Vocabulary[i] != undefined){
+        if(objectJ.Vocabulary[i].vocab == wtd){
+             objectJ.Vocabulary[i].meaning = newMeaning; 
+             console.log("Update finished.");
+             return  objectJ;
+        }
+    }
+    }  
+    
+ 
+ }
  function getWord(word){
     var wtd = ' ' + word + ' '; 
     var length = objectJ.Vocabulary.length;     
@@ -3293,7 +3318,7 @@ function getJsonData(){
         }
     }
     }  
-     return  objectJ;
+      
  
  }
  function deleteWord(word){
@@ -3303,7 +3328,7 @@ function getJsonData(){
     if(objectJ.Vocabulary[i] != undefined){
          if(objectJ.Vocabulary[i].vocab == wtd){
              objectJ.Vocabulary.splice(i,1); 
-           
+          return "Deletion finished."; 
         }
            
         }

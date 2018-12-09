@@ -222,7 +222,10 @@
                 while (option.firstChild) {
                     option.removeChild(option.firstChild);
                 }
-             } else {
+             } 
+         
+         
+         else {
                 lang.setAttribute('value', 'EN');
                 nHome.textContent = "Home";
                 nColor.textContent = "Color";

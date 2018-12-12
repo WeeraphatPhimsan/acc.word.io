@@ -3,9 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Vocabulary Translation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <title>Accounting Vocabulary Translation</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <link rel="stylesheet" type="text/css" href="styles/acc_style.css">
  
     <style>
@@ -62,7 +65,7 @@
                              <img src="images/aboutBtn.jpg"> Show Instruction</br>
                              <img src="images/speakBtn.jpg"> Pronouncing the word</br>
                              <img src="images/searchArea.jpg"> Show translation</br>
-                            <button type="button" class="closeBtn">X</button>
+                            <!--<button type="button" class="closeBtn">X</button>-->
                         </div>
                     </div>
                 </div>
@@ -81,7 +84,8 @@
         </form>
         <div>
             <form class="resultForm">
-                <td><textarea disabled="disabled" class="result">Translation Area</textarea></td>
+                <!--<td><textarea disabled="disabled" class="result">Translation Area</textarea></td>-->
+                <div style = 'word-break: break-all; word-wrap: break-word;'class="w3-container" id="result"> Translation Area</div>
             </form>
         </div>
         <div>

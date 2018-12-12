@@ -270,8 +270,8 @@
                     $(this).css('background-color', '#941b0c');
                 });
                 $('h1').css('color', '#941b0c');
-                $('.result').css('background-color', '#511206');
-                $('.result').css('color', '#ffffff');
+                $('#result').css('background-color', '#511206');
+                $('#result').css('color', '#ffffff');
                 $('.lang').css('background-color', '#621708');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -306,8 +306,8 @@
                     $(this).css('background-color', '#61d8c4');
                 });
                 $('h1').css('color', '#65dcc8');
-                $('.result').css('background-color', '#81f4e1');
-                $('.result').css('color', '#0d6355');
+                $('#result').css('background-color', '#81f4e1');
+                $('#result').css('color', '#0d6355');
                 $('.lang').css('background-color', '#ff729f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -343,8 +343,8 @@
                     $(this).css('background-color', '#ec4365');
                 });
                 $('h1').css('color', '#fed24f');
-                $('.result').css('background-color', '#ec4365');
-                $('.result').css('color', '#681526');
+                $('#result').css('background-color', '#ec4365');
+                $('#result').css('color', '#681526');
                 $('.lang').css('background-color', '#fed24f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #b170c5');
@@ -379,8 +379,8 @@
                     $(this).css('background-color', '#da2123');
                 });
                 $('h1').css('color', '#196686');
-                $('.result').css('background-color', '#196686');
-                $('.result').css('color', '#b8e0f0');
+                $('#result').css('background-color', '#196686');
+                $('#result').css('color', '#b8e0f0');
                 $('.lang').css('background-color', '#22acd2');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #74621a');
@@ -416,8 +416,8 @@
                     $(this).css('background-color', '#ed8258');
                 });
                 $('h1').css('color', '#898989');
-                $('.result').css('background-color', '#313443');
-                $('.result').css('color', '#b0b5cd');
+                $('#result').css('background-color', '#313443');
+                $('#result').css('color', '#b0b5cd');
                 $('.lang').css('background-color', '#515d73');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #1e2131');

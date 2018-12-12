@@ -3,7 +3,7 @@
          var option = document.getElementById("vocab");
         var init = 0;
         var searchBut = document.querySelector('.searchBut');
-        var show = document.querySelector('.result');
+        var show = document.querySelector('#result');
         var posHis = 0;
         var speak = document.querySelector('.speak');
         var lang = document.querySelector('.lang');

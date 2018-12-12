@@ -49,7 +49,7 @@
         wordList = responseJson['Vocabulary'];
 
       
-        function filterFunction() {
+ function filterFunction() {
             var word,word2,wtc ;
              
             wtc = document.getElementById("searchBoxx");
@@ -69,14 +69,13 @@
                 option.appendChild(vocabLi);
                }
 
-               }else if (word2.length >3){
-               
-               }
+               } 
 
 
                    init++;
                }
-            } else if (mode == 'th') {
+            }
+            else if (mode == 'th') {
                 if (init == 0) {
                     for (var i = 0; i < wordList.length; i++) {
                         var vocabLi = document.createElement("OPTION");
@@ -103,7 +102,7 @@
                     }  
                     else if (vocabList.includes(check)) {
                         if (vocabList.length == (check.length + 2)) {
-                            show.textContent = vocabList + " \n " + wordList[i].meaning;
+                            show.textContent = vocabList + '\n' + wordList[i].meaning;
                             addHistory(vocabList);
                             break;
                         }

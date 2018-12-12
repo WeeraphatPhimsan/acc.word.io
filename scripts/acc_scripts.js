@@ -3,7 +3,7 @@
          var option = document.getElementById("vocab");
         var init = 0;
         var searchBut = document.querySelector('.searchBut');
-        var show = document.querySelector('#result');
+        var show = document.querySelector('.result');
         var posHis = 0;
         var speak = document.querySelector('.speak');
         var lang = document.querySelector('.lang');
@@ -21,11 +21,11 @@
         var wordList;
         var requestURL = "Vocab.json";
         var responseJson;
-         
+        // var request = new XMLHttpRequest();
+        
         var aboutBtn = document.querySelector('#about');
         var instruc = document.querySelector('.modal');
-
-        aboutBtn.addEventListener('click',function(){
+         aboutBtn.addEventListener('click',function(){
             if(instruc.style.display == "block"){
                  instruc.style.display = "none";
             }
@@ -35,6 +35,7 @@
 
 
         });
+
         window.onclick = function(event){
             if(event.target == instruc){
                 instruc.style.display = "none";
@@ -43,13 +44,33 @@
 
 
 
-       
+        // request.open('GET', requestURL);
+        // request.responseType = 'json';
+        // request.send();
+        // request.onload = function () {
+        //     var list = request.response;
+        //     showVocab(list);
+        // }
+
+        // function showVocab(jsonobj) {
+        //     wordList = jsonobj['Vocabulary'];
+        // }
         
         responseJson = getJsonData();
         wordList = responseJson['Vocabulary'];
-
+        function case_insensitive_search(str, search_str)
+            {
+                var result = str.search(new RegExp(search_str, "i"));
+  
+                if (result >= 0){
+                return 1;
+                }
+                else{
+                     return 0;
+                }  
+            }
       
- function filterFunction() {
+        function filterFunction() {
             var word,word2,wtc ;
              
             wtc = document.getElementById("searchBoxx");
@@ -102,7 +123,7 @@
                     }  
                     else if (vocabList.includes(check)) {
                         if (vocabList.length == (check.length + 2)) {
-                            show.textContent = vocabList + '\n' + wordList[i].meaning;
+                            show.textContent = vocabList + " \n " + wordList[i].meaning;
                             addHistory(vocabList);
                             break;
                         }
@@ -111,8 +132,7 @@
                         show.textContent = "Sorry, we can't find your word (" + check + ")";
                     }
                 }
-            } 
-         if (mode == 'th') {
+            } else if (mode == 'th') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].meaning;
                     if (check == '' || check == ' ' || check == "  " || check == "   ") {
@@ -209,7 +229,7 @@
                 nHome.textContent = "หน้าหลัก";
                 nColor.textContent = "เปลี่ยนสี";
                 nHis.textContent = "ประวัติ";
-                nGoo.textContent = "แปลภาษาด้วย Google";
+                nGoo.textContent = "แปลด้วย Google";
                 nAbout.textContent = "เกี่ยวกับ";
                 nAcc.textContent = "ศัพท์ทางบัญชี";
                 data.setAttribute('placeHolder', 'ตัวอย่าง: ถัวเฉลี่ย');
@@ -221,10 +241,8 @@
                 while (option.firstChild) {
                     option.removeChild(option.firstChild);
                 }
-             } 
-         
-         
-         else {
+                 
+            } else {
                 lang.setAttribute('value', 'EN');
                 nHome.textContent = "Home";
                 nColor.textContent = "Color";
@@ -269,8 +287,8 @@
                     $(this).css('background-color', '#941b0c');
                 });
                 $('h1').css('color', '#941b0c');
-                $('#result').css('background-color', '#511206');
-                $('#result').css('color', '#ffffff');
+                $('.result').css('background-color', '#511206');
+                $('.result').css('color', '#ffffff');
                 $('.lang').css('background-color', '#621708');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -305,8 +323,8 @@
                     $(this).css('background-color', '#61d8c4');
                 });
                 $('h1').css('color', '#65dcc8');
-                $('#result').css('background-color', '#81f4e1');
-                $('#result').css('color', '#0d6355');
+                $('.result').css('background-color', '#81f4e1');
+                $('.result').css('color', '#0d6355');
                 $('.lang').css('background-color', '#ff729f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -342,8 +360,8 @@
                     $(this).css('background-color', '#ec4365');
                 });
                 $('h1').css('color', '#fed24f');
-                $('#result').css('background-color', '#ec4365');
-                $('#result').css('color', '#681526');
+                $('.result').css('background-color', '#ec4365');
+                $('.result').css('color', '#681526');
                 $('.lang').css('background-color', '#fed24f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #b170c5');
@@ -378,8 +396,8 @@
                     $(this).css('background-color', '#da2123');
                 });
                 $('h1').css('color', '#196686');
-                $('#result').css('background-color', '#196686');
-                $('#result').css('color', '#b8e0f0');
+                $('.result').css('background-color', '#196686');
+                $('.result').css('color', '#b8e0f0');
                 $('.lang').css('background-color', '#22acd2');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #74621a');
@@ -415,8 +433,8 @@
                     $(this).css('background-color', '#ed8258');
                 });
                 $('h1').css('color', '#898989');
-                $('#result').css('background-color', '#313443');
-                $('#result').css('color', '#b0b5cd');
+                $('.result').css('background-color', '#313443');
+                $('.result').css('color', '#b0b5cd');
                 $('.lang').css('background-color', '#515d73');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #1e2131');

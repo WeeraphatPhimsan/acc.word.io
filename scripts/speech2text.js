@@ -35,7 +35,7 @@ document.body.onclick = function() {
 recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var word = event.results[last][0].transcript;
-  searchBox.textContent = word ;
+  searchBox.value = word ;
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
 recognition.onspeechend = function() {

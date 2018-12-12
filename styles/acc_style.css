@@ -117,13 +117,13 @@
                 display: inline-block;
                 margin-top: 30px;
             }
-            .result {
+            #result {
                 border: 0px;
                 color: #005d9b;
                 background-color: #b3e0ff;
-                height: 65px;
-                width: 600px;
-                padding: 5px;
+                max-height: 65px;
+                max-width: 600px;
+                padding: 15px;
                 font-size: 25px;
                 font-family: sans-serif;
                 border-radius: 10px;
@@ -149,6 +149,15 @@
             input[type=image]:hover {
                 border: 5px solid #1c4d6e ;
             }
+@media screen and (max-width: 1060px) {
+    #primary { width:67%; }
+    #secondary { width:30%; margin-left:3%;}  
+}
+
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+    #secondary { width:100%; margin:0; border:none; }
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

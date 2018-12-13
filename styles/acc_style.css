@@ -162,7 +162,16 @@ body {
             input[type=image]:hover {
                 border: 5px solid #1c4d6e ;
             }
- 
+ #exitBtn{
+	 
+	background-color: #73a2ef;
+	float: right;
+	border-radius: 25%;
+	color: darkblue;
+}
+#exitBtn:hover{
+ 	color: blue;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

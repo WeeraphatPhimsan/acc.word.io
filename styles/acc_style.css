@@ -5,7 +5,7 @@
             }
             #myForm{
                 display: inline-block;
-                margin-top: 15%;
+                margin-top: 5%;
             }
             .searchBox {
                 border: 0px;
@@ -121,8 +121,8 @@
                 border: 0px;
                 color: #005d9b;
                 background-color: #b3e0ff;
-                max-height: 65px;
-                max-width: 600px;
+                max-height: 120px;
+                max-width: 800px;
                 padding: 15px;
                 font-size: 25px;
                 font-family: sans-serif;
@@ -137,7 +137,7 @@
                 border: 0px;
                 font-size: 20px;
                 width: 60px;
-                height: 50px;
+                height: 57px;
             }
             .searchBut, .speak, .closeBtn, .lang{
                  -webkit-appearance: none;
@@ -149,6 +149,7 @@
             input[type=image]:hover {
                 border: 5px solid #1c4d6e ;
             }
+
 @media screen and (max-width: 1060px) {
     #primary { width:67%; }
     #secondary { width:30%; margin-left:3%;}  
@@ -184,4 +185,13 @@
 #Instruction {
     background-color: #6098f2;
     font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color:#1e488c;
+    box-sizing: border-box;
+    display: grid;
+    
+    grid-row-gap: 0.25px;
+    border-color: grey;
+     
 }

@@ -27,15 +27,18 @@ var bg = document.querySelector('div');
 var hints = document.querySelector('.hints');
  
 
+
+
 function record(){
-document.body.onclick = function() {
+	try {
+ 
   recognition.start();
   console.log('Ready to record.');
-}
+ 
 recognition.onresult = function(event) {
   var last = event.results.length - 1;
   var word = event.results[last][0].transcript;
-  searchBox.value = word ;
+  searchBox.value =   word ;
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
 recognition.onspeechend = function() {
@@ -43,4 +46,13 @@ recognition.onspeechend = function() {
 }
  
  
-}
+	}
+
+	catch(err) {
+		console.log("Error! please refresh the page.");
+
+	}
+
+ 
+	}
+ 

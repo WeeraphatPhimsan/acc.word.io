@@ -21,8 +21,7 @@
         var wordList;
         var requestURL = "Vocab.json";
         var responseJson;
-        // var request = new XMLHttpRequest();
-        
+         
         var aboutBtn = document.querySelector('#about');
         var instruc = document.querySelector('.modal');
          aboutBtn.addEventListener('click',function(){
@@ -42,23 +41,11 @@
             }
         }
 
-
-
-        // request.open('GET', requestURL);
-        // request.responseType = 'json';
-        // request.send();
-        // request.onload = function () {
-        //     var list = request.response;
-        //     showVocab(list);
-        // }
-
-        // function showVocab(jsonobj) {
-        //     wordList = jsonobj['Vocabulary'];
-        // }
+ 
         
         responseJson = getJsonData();
         wordList = responseJson['Vocabulary'];
-        function case_insensitive_search(str, search_str)
+function case_insensitive_search(str, search_str)
             {
                 var result = str.search(new RegExp(search_str, "i"));
   
@@ -75,28 +62,9 @@
              
             wtc = document.getElementById("searchBoxx");
             word2 = wtc.value;
-            while (option.firstChild) {
-               option.removeChild(option.firstChild);
-            }
-            if (mode == 'en') {
-                  
-                    for (var i = 0; i < wordList.length; i++) {
-                    var vocabLi = document.createElement("OPTION");
-                    word = wordList[i].vocab;
-                    word = word.slice(1, word.length - 1);                        
-               if(word2.length > 0){
-                if(word.startsWith(word2)){
-                vocabLi.setAttribute("value",  word    );
-                option.appendChild(vocabLi);
-               }
-
-               } 
-
-
-                   init++;
-               }
-            }
-            else if (mode == 'th') {
+            
+            if (mode == 'th') {
+           
                 if (init == 0) {
                     for (var i = 0; i < wordList.length; i++) {
                         var vocabLi = document.createElement("OPTION");
@@ -107,8 +75,34 @@
                     init++;
                 }
             }
+             if (mode == 'en') {
+                
+                    while (option.firstChild) {option.removeChild(option.firstChild);}
+                         for (var i = 0; i < wordList.length; i++) {
+                                var vocabLi = document.createElement("OPTION");
+                                word = wordList[i].vocab;
+                                word = word.slice(1, word.length - 1);                        
+                                if(word == word2){
+                                    break;
+                                }
+                                if(word2.length > 0){
+                                if( case_insensitive_search(word, word2) && word.startsWith(word2) || word.startsWith(word2.toUpperCase())){
+                                    vocabLi.setAttribute("value",  word    );
+                                    option.appendChild(vocabLi);
+                                }
 
-        }
+                            } 
+                        }
+                 
+              
+               
+                
+            }
+            
+            }
+            
+
+     
 
         searchBut.addEventListener('click', search);
         function search() {
@@ -155,7 +149,7 @@
 
         speak.addEventListener('click', speech);
         function speech() {
-            var line = show.value.split('\n');
+        var line = show.textContent.split('\n');
             VoiceRSS.speech({
                 key: '2558902b05234f43906c04edebfc269c',
                 src: line[0],
@@ -236,6 +230,7 @@
                 searchBut.setAttribute('value', 'ค้นหา');
                 show.textContent = 'พื้นที่สำหรับคำแปล';
                 speak.setAttribute('value', 'เสียงพูด');
+                /////////////////////////////////////////
                 mode = 'th';
                 init = 0;
                 while (option.firstChild) {
@@ -287,8 +282,8 @@
                     $(this).css('background-color', '#941b0c');
                 });
                 $('h1').css('color', '#941b0c');
-                $('.result').css('background-color', '#511206');
-                $('.result').css('color', '#ffffff');
+                $('#result').css('background-color', '#511206');
+                $('#result').css('color', '#ffffff');
                 $('.lang').css('background-color', '#621708');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -323,8 +318,8 @@
                     $(this).css('background-color', '#61d8c4');
                 });
                 $('h1').css('color', '#65dcc8');
-                $('.result').css('background-color', '#81f4e1');
-                $('.result').css('color', '#0d6355');
+                $('#result').css('background-color', '#81f4e1');
+                $('#result').css('color', '#0d6355');
                 $('.lang').css('background-color', '#ff729f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #6a1503');
@@ -360,8 +355,8 @@
                     $(this).css('background-color', '#ec4365');
                 });
                 $('h1').css('color', '#fed24f');
-                $('.result').css('background-color', '#ec4365');
-                $('.result').css('color', '#681526');
+                $('#result').css('background-color', '#ec4365');
+                $('#result').css('color', '#681526');
                 $('.lang').css('background-color', '#fed24f');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #b170c5');
@@ -396,8 +391,8 @@
                     $(this).css('background-color', '#da2123');
                 });
                 $('h1').css('color', '#196686');
-                $('.result').css('background-color', '#196686');
-                $('.result').css('color', '#b8e0f0');
+                $('#result').css('background-color', '#196686');
+                $('#result').css('color', '#b8e0f0');
                 $('.lang').css('background-color', '#22acd2');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #74621a');
@@ -433,8 +428,8 @@
                     $(this).css('background-color', '#ed8258');
                 });
                 $('h1').css('color', '#898989');
-                $('.result').css('background-color', '#313443');
-                $('.result').css('color', '#b0b5cd');
+                $('#result').css('background-color', '#313443');
+                $('#result').css('color', '#b0b5cd');
                 $('.lang').css('background-color', '#515d73');
                 $('input[type=image]').hover(function () {
                     $(this).css('border', '5px solid #1e2131');

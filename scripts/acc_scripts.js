@@ -7,6 +7,7 @@
         var posHis = 0;
         var speak = document.querySelector('.speak');
         var lang = document.querySelector('.lang');
+        var exitBtn = document.querySelector('#exitBtn');
 
         var nHome = document.getElementById('home');
         var nColor = document.getElementById('color');
@@ -34,7 +35,14 @@
 
 
         });
-
+        exitBtn.onclick = function(e){
+             if(instruc.style.display == "block"){
+                 instruc.style.display = "none";
+            }
+            else{
+                instruc.style.display = "block";
+            }
+        }
         window.onclick = function(event){
             if(event.target == instruc){
                 instruc.style.display = "none";

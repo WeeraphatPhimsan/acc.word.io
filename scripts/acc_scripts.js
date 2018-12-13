@@ -109,7 +109,7 @@ function case_insensitive_search(str, search_str)
         function search() {
             var insertWord = document.querySelector('.searchBox');
 
-            check = insertWord.value.toLowerCase();
+            check = insertWord.value;
             if (mode == 'en') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].vocab;

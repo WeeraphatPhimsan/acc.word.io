@@ -81,12 +81,13 @@ function case_insensitive_search(str, search_str)
                          for (var i = 0; i < wordList.length; i++) {
                                 var vocabLi = document.createElement("OPTION");
                                 word = wordList[i].vocab;
-                                word = word.slice(1, word.length - 1);                        
+                                word = word.slice(1, word.length - 1);
+                                console.log(word);
                                 if(word == word2){
                                     break;
                                 }
                                 if(word2.length > 0){
-                                if( case_insensitive_search(word, word2) && word.startsWith(word2) || word.startsWith(word2.toUpperCase())){
+                                if( case_insensitive_search(word, word2) && word.startsWith(word2) || word.startsWith(word2.toUpperCase()) || word.startsWith(word2.toLowerCase()) ){
                                     vocabLi.setAttribute("value",  word    );
                                     option.appendChild(vocabLi);
                                 }
@@ -108,7 +109,7 @@ function case_insensitive_search(str, search_str)
         function search() {
             var insertWord = document.querySelector('.searchBox');
 
-            check = insertWord.value;
+            check = insertWord.value.toLowerCase();
             if (mode == 'en') {
                 for (var i = 0; i < wordList.length; i++) {
                     var vocabList = wordList[i].vocab;

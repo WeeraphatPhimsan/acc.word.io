@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-     <title>Accounting Vocabulary Translation</title>
+
+    <title>Accounting Vocabulary Translation</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" type="text/css" href="styles/acc_style.css">
     <style>
-        
-            html {
+
+        html {
                 background-image: url("images/Accounting.jpg");
                 height: 100%;
                 position: relative;
@@ -25,14 +25,16 @@
 
         </style>
     <script src='voicerss-tts.min.js'></script>
- 
+
 </head>
 
 <body>
+
     <div class="bgimg">
         <ul class="searchDiv">
-            <li><a href="index.html" id="home">Home</a></li>
+            <li><img class="icon" src="images/Home-icon.png" height="30" width="30"><a href="index.html" id="home">Home</a></li>
             <li class="dropdown">
+                <img class="icon" src="images/rgb-circle-1.png" height="30" width="30">
                 <a href="javascript:void(0)" class="dropbtn" id="color">Color</a>
                 <div class="dropdown-content" id='dropdown-content'>
                     <input type="image" src="images/Color/Color1.png" class="col1">
@@ -43,98 +45,123 @@
                 </div>
             </li>
             <li class="dropdown">
+                <img class="icon" src="images/history-timeline-icon-33.png" height="30" width="30">
                 <a href="javascript:void(0)" class="dropbtn" id="historyTitle">History</a>
                 <div class="dropdown-content" id="history">
 
                 </div>
             </li>
             <li class="dropdown">
-                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" target="_blank" id="google">Google Translate</a>
+                <img class="icon" src="images/281776.png" height="30" width="30">
+                <a href="https://translate.google.co.th/?hl=th" class="dropbtn" target="_blank" id="google">Google
+                    Translate</a>
             </li>
             <li style="float:right"><input type="button" value="EN" class="lang"></li>
-            <li   style="float:left"><a id="about">About</a>
+            <li style="float:left"><img class="icon" src="images/Settings-icon.png" height="30" width="30"><a id="about">About</a>
                 <div class="modal">
                     <div class="modalWindow">
-                         <button id="exitBtn">x</button>
-                     <h2>Instructions</h2>
+                        <button id="exitBtn">x</button>
+                        <h2>Instructions</h2>
                         <div id="Instruction">
                             <figure>
-                                <img src="images/homeBtn.jpg" id="homePic"> <img src="images/homeBtnTH.jpg"  >
+                                <img src="images/homeBtn.jpg" id="homePic"> <img src="images/homeBtnTH.jpg">
                                 <figcaption id="homePicCap">Back to home page / ไปที่หน้าหลัก</figcaption>
                             </figure>
-                            
+
                             <figure>
-                                <img src="images/colorBtn.jpg"id="colorPic"> <img src="images/colorBtnTH.jpg" >
+                                <img src="images/colorBtn.jpg" id="colorPic"> <img src="images/colorBtnTH.jpg">
                                 <figcaption id="colorPicCap">Change the theme of the page / เปลี่ยนธีมหน้าเว็บ</figcaption>
                             </figure>
                             <figure>
-                                <img src="images/historyBtn.jpg" id="histPic"> <img src="images/historyBtnTH.jpg"  >
+                                <img src="images/historyBtn.jpg" id="histPic"> <img src="images/historyBtnTH.jpg">
                                 <figcaption id="histPicCap"> View word has been searched / ดูประวัติการค้นคำศัพท์</figcaption>
                             </figure>
                             <figure>
-                                 <img src="images/googleBtn.jpg" id="googlePic"> <img src="images/googleBtnTH.jpg" >
-                                <figcaption id="googlePicCap"> Link to Google Translate / ไปยัง Google แปลภาษา </figcaption>
+                                <img src="images/googleBtn.jpg" id="googlePic"> <img src="images/googleBtnTH.jpg">
+                                <figcaption id="googlePicCap"> Link to Google Translate / ไปยัง Google แปลภาษา
+                                </figcaption>
                             </figure>
                             <figure>
-                                <img src="images/langBtn.jpg" id="langPic"> <img src="images/langBtnTH.jpg"  >
+                                <img src="images/langBtn.jpg" id="langPic"> <img src="images/langBtnTH.jpg">
                                 <figcaption id="langPicCap"> Click to change language / เปลี่ยนภาษา </figcaption>
                             </figure>
-                              <figure>
-                              <img src="images/aboutBtn.jpg" id="aboutPic"> <img src="images/aboutBtnTH.jpg"  >
+                            <figure>
+                                <img src="images/aboutBtn.jpg" id="aboutPic"> <img src="images/aboutBtnTH.jpg">
                                 <figcaption id="aboutPicCap"> Show Instruction / แสดงคำแนะนำ </figcaption>
                             </figure>
 
-                              <figure>
-                              <img src="images/speakBtn.jpg" id="speakPic"> <img src="images/speakBtnTH.jpg" >
+                            <figure>
+                                <img src="images/speakBtn.jpg" id="speakPic"> <img src="images/speakBtnTH.jpg">
                                 <figcaption id="speakPicCap"> Pronouncing the word / ออกเสียงคำ</figcaption>
                             </figure>
-                         
-                       
-                        
-                       
-                           <!--  <button type="button" class="closeBtn">X</button> -->
+
+
+
+
+                            <!--  <button type="button" class="closeBtn">X</button> -->
                         </div>
                     </div>
                 </div>
             </li>
-           
-        </ul>
 
+        </ul>
+        <div>
+            <h1 class="letter" data-letter="A">A</h1>
+            <h1 class="letter" data-letter="c">c</h1>
+            <h1 class="letter" data-letter="c">c</h1>
+            <h1 class="letter" data-letter="o">o</h1>
+            <h1 class="letter" data-letter="u">u</h1>
+            <h1 class="letter" data-letter="n">n</h1>
+            <h1 class="letter" data-letter="t">t</h1>
+            <h1 class="letter" data-letter="i">i</h1>
+            <h1 class="letter" data-letter="n">n</h1>
+            <h1 class="letter" data-letter="g">g </h1>
+            <h1 class="letter" data-letter="  "> </h1>
+            <h1 class="letter" data-letter="V">V</h1>
+            <h1 class="letter" data-letter="o">o</h1>
+            <h1 class="letter" data-letter="c">c</h1>
+            <h1 class="letter" data-letter="a">a</h1>
+            <h1 class="letter" data-letter="b">b</h1>
+            <h1 class="letter" data-letter="u">u</h1>
+            <h1 class="letter" data-letter="l">l</h1>
+            <h1 class="letter" data-letter="a">a</h1>
+            <h1 class="letter" data-letter="r">r</h1>
+            <h1 class="letter" data-letter="y">y</h1>
+        </div>
         <form id="myForm">
-            <h1 class="site_title mega" id="title">Accounting Vocabulary</h1>
+
             <input type="text" list="vocab" class="searchBox" id="searchBoxx" placeholder="Example: average">
             <datalist id="vocab">
 
             </datalist>
             <input type="button" value="Search" class="searchBut">
-             <button type="button" class="mic"></button>
+            <button type="button" class="mic"></button>
         </form>
         <div>
             <form class="resultForm">
-             <!--    <td><textarea disabled="disabled" class="w3-container w3-green"id="result">Translation Area</textarea></td> -->
-             <div style = 'word-break: break-all; word-wrap: break-word; white-space: pre-wrap;'class="w3-container" id="result"> Translation Area</div>
+                <!--    <td><textarea disabled="disabled" class="w3-container w3-green"id="result">Translation Area</textarea></td> -->
+                <div style='word-break: break-all; word-wrap: break-word; white-space: pre-wrap;' class="w3-container"
+                    id="result"> Translation Area</div>
             </form>
         </div>
         <div>
             <input type="button" value="Speak" class="speak">
+            <img src="images/talk.gif" width="70" height="70" >
         </div>
-
     </div>
- 
-
 </body>
 
 </html>
-    <script src="https://cdn.jsdelivr.net/gh/WeeraphatPhimsan/acc.word.io/vocab-API/vocab-api.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/WeeraphatPhimsan/acc.word.io/vocab-API/vocab-api.js"></script>
 
- <script type="text/javascript" src="scripts/acc_scripts.js"></script>
-   <script src="scripts/speech2text.js"></script>
+<script type="text/javascript" src="scripts/acc_scripts.js"></script>
+<script src="scripts/speech2text.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131003504-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-131003504-1');
+    gtag('config', 'UA-131003504-1');
 </script>

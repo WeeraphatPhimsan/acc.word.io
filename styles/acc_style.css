@@ -28,7 +28,7 @@ body {
                 font-family: sans-serif;
             }
             .searchBut, .speak, .closeBtn {
-                height: 40px;
+                height: 50px;
                 color: white;
                 background-color: #4db8ff;
                 border: 2px solid #4581a8;
@@ -39,7 +39,7 @@ body {
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
-		width:100%;
+		        width:100%;
                 overflow: hidden;
                 background-color: #5fbdfc;
                 font-size: 20px;
@@ -48,6 +48,7 @@ body {
 
             li {
                 float: left;
+                margin-left: 10px;
             }
 
             li a, .dropbtn {
@@ -71,7 +72,7 @@ body {
                 position: absolute;
                 background-color: #0080bb;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
+                z-index: 4;
             }
 
             .dropdown-content input,.history p {
@@ -116,10 +117,9 @@ body {
                 color: rgb(124, 192, 255);
             }
 
-           
             .resultForm, .speak{
                 display: inline-block;
-                margin-top: 30px;
+                margin-top: 10px;
             }
             #result {
                 border: 0px;
@@ -166,7 +166,7 @@ body {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 4; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -197,5 +197,91 @@ body {
     
     grid-row-gap: 0.25px;
     border-color: grey;
-     
+}
+
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+
+div.foo{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+.letter{
+  display: inline-block;
+  font-weight: 500;
+  font-size: 4em;
+  margin-top: 10%;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 400;
+  z-index: 1;
+}
+
+@keyframes colorchange
+{
+  0%   {color: rgb(253, 85, 85);}
+  25%  {color: rgb(230, 230, 65);}
+  50%  {color: rgb(72, 216, 132);}
+  75%  {color: rgb(78, 177, 223)}
+  100% {color: rgb(253, 85, 85);}
+}
+
+@-webkit-keyframes colorchange
+{
+    0%   {color: rgb(253, 85, 85);}
+  25%  {color: rgb(247, 247, 100);}
+  50%  {color: rgb(245, 161, 105);}
+  75%  {color: rgb(78, 223, 97)}
+  100% {color: rgb(253, 85, 85);}
+}
+
+.letter:before, .letter:after{
+  position:absolute;
+  content: attr(data-letter);
+  transform-origin: top left;
+  top:0;
+  left:0;
+}
+.letter, .letter:before, .letter:after{
+  transition: all 0.3s ease-in-out;
+}
+.letter:before{
+  text-shadow: 
+    -1px 0px 1px rgba(172, 222, 255, 0.8),
+    1px 0px 1px rgba(0, 0, 0, 0.8);
+    border: black;
+    z-index: 3;
+    transform:
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+    animation: colorchange 50s infinite;
+    -webkit-animation: colorchange 50s infinite; 
+}
+.letter:after{
+  color: rgba(0,0,0,.11);
+  z-index:2;
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+}
+.letter:hover:before{
+  color: #fafafa;
+  transform:
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+}
+.letter:hover:after{
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
 }

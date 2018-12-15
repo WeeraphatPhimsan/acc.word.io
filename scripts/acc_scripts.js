@@ -14,7 +14,6 @@
         var nHis = document.getElementById('historyTitle');
         var nGoo = document.getElementById('google');
         var nAbout = document.getElementById('about');
-        var nAcc = document.getElementById('title');
 
         var check = '';
         var mode = 'en';
@@ -234,7 +233,6 @@ function case_insensitive_search(str, search_str)
                 nHis.textContent = "ประวัติ";
                 nGoo.textContent = "แปลด้วย Google";
                 nAbout.textContent = "เกี่ยวกับ";
-                nAcc.textContent = "ศัพท์ทางบัญชี";
                 data.setAttribute('placeHolder', 'ตัวอย่าง: ถัวเฉลี่ย');
                 searchBut.setAttribute('value', 'ค้นหา');
                 show.textContent = 'พื้นที่สำหรับคำแปล';
@@ -253,7 +251,6 @@ function case_insensitive_search(str, search_str)
                 nHis.textContent = "History";
                 nGoo.textContent = "Google translate";
                 nAbout.textContent = "About";
-                nAcc.textContent = "Accounting Vocabulary";
                 data.setAttribute('placeHolder', 'Example: average');
                 searchBut.setAttribute('value', 'Search');
                 show.textContent = 'Translation Area';
@@ -454,3 +451,12 @@ function case_insensitive_search(str, search_str)
             });
 
         });
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }

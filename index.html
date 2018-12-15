@@ -8,7 +8,7 @@
     <title>Accounting Vocabulary Translation</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="styles/acc_style.css">
     <style>
 
@@ -31,10 +31,10 @@
 <body>
 
     <div class="bgimg">
-        <ul class="searchDiv">
-            <li><img class="icon" src="images/Home-icon.png" height="30" width="30"><a href="index.html" id="home">Home</a></li>
+        <ul class="searchDiv" id="myTopnav">
+            <li><img src="images/Home-icon.png" height="30" width="30"><a href="index.html" id="home">Home</a></li>
             <li class="dropdown">
-                <img class="icon" src="images/rgb-circle-1.png" height="30" width="30">
+                <img src="images/rgb-circle-1.png" height="30" width="30">
                 <a href="javascript:void(0)" class="dropbtn" id="color">Color</a>
                 <div class="dropdown-content" id='dropdown-content'>
                     <input type="image" src="images/Color/Color1.png" class="col1">
@@ -45,19 +45,19 @@
                 </div>
             </li>
             <li class="dropdown">
-                <img class="icon" src="images/history-timeline-icon-33.png" height="30" width="30">
+                <img src="images/history-timeline-icon-33.png" height="30" width="30">
                 <a href="javascript:void(0)" class="dropbtn" id="historyTitle">History</a>
                 <div class="dropdown-content" id="history">
 
                 </div>
             </li>
             <li class="dropdown">
-                <img class="icon" src="images/281776.png" height="30" width="30">
+                <img src="images/281776.png" height="30" width="30">
                 <a href="https://translate.google.co.th/?hl=th" class="dropbtn" target="_blank" id="google">Google
                     Translate</a>
             </li>
             <li style="float:right"><input type="button" value="EN" class="lang"></li>
-            <li style="float:left"><img class="icon" src="images/Settings-icon.png" height="30" width="30"><a id="about">About</a>
+            <li style="float:left"><img src="images/Settings-icon.png" height="30" width="30"><a id="about">About</a>
                 <div class="modal">
                     <div class="modalWindow">
                         <button id="exitBtn">x</button>
@@ -94,16 +94,13 @@
                                 <img src="images/speakBtn.jpg" id="speakPic"> <img src="images/speakBtnTH.jpg">
                                 <figcaption id="speakPicCap"> Pronouncing the word / ออกเสียงคำ</figcaption>
                             </figure>
-
-
-
-
-                            <!--  <button type="button" class="closeBtn">X</button> -->
                         </div>
                     </div>
                 </div>
             </li>
-
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </ul>
         <div>
             <h1 class="letter" data-letter="A">A</h1>
@@ -146,7 +143,7 @@
         </div>
         <div>
             <input type="button" value="Speak" class="speak">
-            <img src="images/talk.gif" width="70" height="70" >
+            <img src="images/talk.gif" width="70" height="70">
         </div>
     </div>
 </body>

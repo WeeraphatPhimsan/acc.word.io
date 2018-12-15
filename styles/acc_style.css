@@ -285,3 +285,35 @@ div.foo{
     rotateZ(0deg)
     skew(0deg,22deg);
 }
+
+.searchDiv .icon {
+    display: none;
+  }
+
+@media screen and (max-width: 820px) {
+    .searchDiv li:not(:first-child) {display: none;}
+    .searchDiv a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 820px) {
+    .searchDiv.responsive {position: relative;}
+    .searchDiv.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .searchDiv.responsive li {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+
+  .fa{
+      padding: 10px;
+      padding-top: 15px;
+      color: white;
+  }
